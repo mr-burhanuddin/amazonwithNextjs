@@ -39,35 +39,35 @@ export default function PaymentScreen() {
   }, [paymentMethod, router, shippingAddress.address]);
 
   return (
-    <Layout title='Payment Method'>
+    <Layout title="Payment Method">
       <CheckoutWizard activeStep={2} />
-      <form className='mx-auto max-w-screen-md' onSubmit={submitHandler}>
-        <h1 className='mb-4 text-xl'>Payment Method</h1>
+      <form className="mx-auto max-w-screen-md" onSubmit={submitHandler}>
+        <h1 className="mb-4 text-xl">Payment Method</h1>
         {['PayPal', 'Stripe', 'CashOnDelivery'].map((payment) => (
-          <div key={payment} className='mb-4'>
+          <div key={payment} className="mb-4">
             <input
-              name='paymentMethod'
-              className='p-2 outline-none focus:ring-0'
+              name="paymentMethod"
+              className="p-2 outline-none focus:ring-0"
               id={payment}
-              type='radio'
+              type="radio"
               checked={selectedPaymentMethod === payment}
               onChange={() => setSelectedPaymentMethod(payment)}
             />
 
-            <label className='p-2' htmlFor={payment}>
+            <label className="p-2" htmlFor={payment}>
               {payment}
             </label>
           </div>
         ))}
-        <div className='mb-4 flex justify-between'>
+        <div className="mb-4 flex justify-between">
           <button
             onClick={() => router.push('/shipping')}
-            type='button'
-            className='default-button'
+            type="button"
+            className="default-button"
           >
             Back
           </button>
-          <button className='primary-button'>Next</button>
+          <button className="primary-button">Next</button>
         </div>
       </form>
     </Layout>

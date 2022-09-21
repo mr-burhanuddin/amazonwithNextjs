@@ -47,32 +47,32 @@ export default function LoginScreen() {
     }
   };
   return (
-    <Layout title='Create Account'>
+    <Layout title="Create Account">
       <form
-        className='mx-auto max-w-screen-md'
+        className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <h1 className='mb-4 text-xl'>Create Account</h1>
-        <div className='mb-4'>
-          <label htmlFor='name'>Name</label>
+        <h1 className="mb-4 text-xl">Create Account</h1>
+        <div className="mb-4">
+          <label htmlFor="name">Name</label>
           <input
-            type='text'
-            className='w-full'
-            id='name'
+            type="text"
+            className="w-full"
+            id="name"
             autoFocus
             {...register('name', {
               required: 'Please enter name',
             })}
           />
           {errors.name && (
-            <div className='text-red-500'>{errors.name.message}</div>
+            <div className="text-red-500">{errors.name.message}</div>
           )}
         </div>
 
-        <div className='mb-4'>
-          <label htmlFor='email'>Email</label>
+        <div className="mb-4">
+          <label htmlFor="email">Email</label>
           <input
-            type='email'
+            type="email"
             {...register('email', {
               required: 'Please enter email',
               pattern: {
@@ -80,35 +80,35 @@ export default function LoginScreen() {
                 message: 'Please enter valid email',
               },
             })}
-            className='w-full'
-            id='email'
+            className="w-full"
+            id="email"
           ></input>
           {errors.email && (
-            <div className='text-red-500'>{errors.email.message}</div>
+            <div className="text-red-500">{errors.email.message}</div>
           )}
         </div>
-        <div className='mb-4'>
-          <label htmlFor='password'>Password</label>
+        <div className="mb-4">
+          <label htmlFor="password">Password</label>
           <input
-            type='password'
+            type="password"
             {...register('password', {
               required: 'Please enter password',
               minLength: { value: 6, message: 'password is more than 5 chars' },
             })}
-            className='w-full'
-            id='password'
+            className="w-full"
+            id="password"
             autoFocus
           ></input>
           {errors.password && (
-            <div className='text-red-500 '>{errors.password.message}</div>
+            <div className="text-red-500 ">{errors.password.message}</div>
           )}
         </div>
-        <div className='mb-4'>
-          <label htmlFor='confirmPassword'>Confirm Password</label>
+        <div className="mb-4">
+          <label htmlFor="confirmPassword">Confirm Password</label>
           <input
-            className='w-full'
-            type='password'
-            id='confirmPassword'
+            className="w-full"
+            type="password"
+            id="confirmPassword"
             {...register('confirmPassword', {
               required: 'Please enter confirm password',
               validate: (value) => value === getValues('password'),
@@ -119,22 +119,22 @@ export default function LoginScreen() {
             })}
           />
           {errors.confirmPassword && (
-            <div className='text-red-500 '>
+            <div className="text-red-500 ">
               {errors.confirmPassword.message}
             </div>
           )}
           {errors.confirmPassword &&
             errors.confirmPassword.type === 'validate' && (
-              <div className='text-red-500 '>Password do not match</div>
+              <div className="text-red-500 ">Password do not match</div>
             )}
         </div>
 
-        <div className='mb-4 '>
-          <button className='primary-button'>Register</button>
+        <div className="mb-4 ">
+          <button className="primary-button">Register</button>
         </div>
-        <div className='mb-4 '>
-          Already have an account? &nbsp;
-          <Link href={`/login?redirect=${redirect || '/'}`}>Login</Link>
+        <div className="mb-4 ">
+          Don&apos;t have an account? &nbsp;
+          <Link href={`/register?redirect=${redirect || '/'}`}>Register</Link>
         </div>
       </form>
     </Layout>
