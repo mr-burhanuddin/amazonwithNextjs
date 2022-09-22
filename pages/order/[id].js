@@ -172,7 +172,7 @@ function OrderScreen() {
     const res = await initializeRazorpay();
 
     if (!res) {
-      alert('Razorpay SDK Failed to load');
+      toast.error('Razorpay SDK Failed to load');
       return;
     }
 
@@ -181,7 +181,6 @@ function OrderScreen() {
       method: 'POST',
     }).then((t) => t.json());
 
-    console.log('raa', data);
     var options = {
       key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
       name: 'Amazon',
