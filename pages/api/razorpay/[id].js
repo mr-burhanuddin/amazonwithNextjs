@@ -13,7 +13,6 @@ export default async function handler(req, res) {
 
   await db.connect();
   const order = await Order.findById(req.query.id);
-  await db.disconnect();
 
   if (req.method === 'POST') {
     // Initialize razorpay object
@@ -40,11 +39,14 @@ export default async function handler(req, res) {
         currency: response.currency,
         amount: response.amount,
       });
+      await db.disconnect();
     } catch (err) {
       console.log(err);
+      await db.disconnect();
       res.status(400).json(err);
     }
   } else {
     // Handle any other HTTP method
+    await db.disconnect();
   }
 }
