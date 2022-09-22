@@ -176,10 +176,8 @@ function OrderScreen() {
       return;
     }
 
-    // Make API call to the serverless API
-    const data = await fetch(`/api/razorpay/${order._id}`, {
-      method: 'POST',
-    }).then((t) => t.json());
+    // // Make API call to the serverless API
+    const { data } = await axios.post(`/api/razorpay/${order._id}`, {});
 
     var options = {
       key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
